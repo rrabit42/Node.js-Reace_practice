@@ -2,6 +2,9 @@ const express = require('express')
 const app = express()
 const port = 5000
 const bodyParser = require('body-parser');
+
+const config = require('./config/key');
+
 const { User } = require("./models/User");
 
 const mongoose = require('mongoose') //mongoose: 몽고db를 편하게 사용할 수 있게 해주는 툴, npm install mongoose --save
@@ -11,7 +14,7 @@ app.use(bodyParser.urlencoded({extended:true}));
 // application/json 타입 데이터 분석해서 가져옴
 app.use(bodyParser.json());
 
-mongoose.connect('mongodb+srv://<id>:<password>@basic.sbk7x.mongodb.net/<dbname>?retryWrites=true&w=majority', {
+mongoose.connect(config.mongoURI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
