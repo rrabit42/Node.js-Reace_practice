@@ -93,7 +93,7 @@ userSchema.methods.generateToken = function(cb) {
   })
 }
 
-userSchema.methods.findByToken = function(token, cb) {
+userSchema.statics.findByToken = function(token, cb) {
   var user = this;
 
   // 토큰을 decode 한다
@@ -105,7 +105,7 @@ userSchema.methods.findByToken = function(token, cb) {
       "token": token,
     }, function(err, user){
       if(err) return cb(err);
-      cb(null, user)
+      return cb(null, user)
     })
   });
 }

@@ -89,7 +89,6 @@ app.post('/api/users/login', (req, res) => {
   })
 })
 
-
 // auth라는 미들웨어 추가
 // callback function 전에 수행하는 기능
 app.get('/api/users/auth', auth, (req, res) => {
@@ -104,6 +103,24 @@ app.get('/api/users/auth', auth, (req, res) => {
     role: req.user.role,
     image: req.user.image
   })
+})
+
+// 로그아웃 -> 토큰을 지워주면 됨 그럼 인증이 안되서 로그인이 안되는 것!
+app.get('/api/users/logout', auth, (req, res) => {
+  // auth 미들웨어 수행
+  // 권한이 있는 유저가 로그아웃을 진행할 수 있으니까..
+
+  User.findOneAndUpdate({ _id: req.user._id },
+    { token: ""},
+    (err, user) => {
+      if(err) return res.json({
+        sucess: false,
+        err
+      });
+      return res.status(200).send({
+        sucess: true
+      })
+    })
 })
 
 
