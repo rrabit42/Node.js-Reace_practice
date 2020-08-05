@@ -144,8 +144,11 @@ import "module-name";
 - alias에서 “module-name”에서 구현된 모듈들을 접근할 수 있습니다.
 *import “module-name”*  
 - 바인딩하지 않고, 모듈의 전체의 사이드 이펙트만 가져옵니다.  
-- 사이드 이펙트: 단순하게 해석하면 부작용 정도인데, 헷갈리는 부분이 있어 아래 링크를 첨부합니다. [LINK](https://stackoverflow.com/questions/41127479/es6-import-for-side-effects-meaning)  
-- 아무것도 export하지 않고, import만 해야할 경우(이런 경우가 언제일까???)  
+- 사이드 이펙트: 단순하게 해석하면 부작용이지만 부수 효과라고 보면 된다. 함수형 프로그래밍에서는 외부의 상태를 변경하는 것 또는 함수로 들어온 인자의 상태를 직접 변경하는 것  
+(이 부분은 [순수함수](https://jeong-pro.tistory.com/23)에 관해서 찾아보면 이해가 빠르다, 순수함수는 파라미터만 이용하여 외부에 영향을 미치지 않은 함수, 그 이외의 함수들은 모두 사이드이펙트가 있는 것!!ex. 전역 변수를 건들인다던지)  
+
+헷갈리는 부분이 있어 아래 링크를 첨부합니다. [LINK](https://stackoverflow.com/questions/41127479/es6-import-for-side-effects-meaning)  
+- 아무것도 export하지 않고, import만 해야할 경우(이런 경우가 언제일까??? import한 모듈을 한 번 실행하는 용도일때??)  
 
 **우리 프로젝트에서**  
 import 시 {} 이 안으로 넣는 것은 그 안에 있는 함수나 변수들이 default로 가져오는게 아니어서 그렇다!  
