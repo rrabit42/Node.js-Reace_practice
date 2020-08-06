@@ -148,7 +148,9 @@ import "module-name";
 (이 부분은 [순수함수](https://jeong-pro.tistory.com/23)에 관해서 찾아보면 이해가 빠르다, 순수함수는 파라미터만 이용하여 외부에 영향을 미치지 않은 함수, 그 이외의 함수들은 모두 사이드이펙트가 있는 것!!ex. 전역 변수를 건들인다던지)  
 
 헷갈리는 부분이 있어 아래 링크를 첨부합니다. [LINK](https://stackoverflow.com/questions/41127479/es6-import-for-side-effects-meaning)  
-- 아무것도 export하지 않고, import만 해야할 경우(이런 경우가 언제일까??? import한 모듈을 한 번 실행하는 용도일때??)  
+- 아무것도 export하지 않고, import만 해야할 경우(이런 경우가 언제일까??? import한 모듈을 한 번 실행하는 용도일때??  
+=> ESM(Entire Security Management) 패키지 사용 시 이런 import문 사용! -> 변수들만 sanitize 시켜주니까!!)  
+> If your project uses packages that export ESM, you can also import them for side effects only. This will run the code in the package entry point file (and any files it imports) only.  
 
 **우리 프로젝트에서**  
 import 시 {} 이 안으로 넣는 것은 그 안에 있는 함수나 변수들이 default로 가져오는게 아니어서 그렇다!  
