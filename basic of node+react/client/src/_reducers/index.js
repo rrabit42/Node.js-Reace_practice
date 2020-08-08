@@ -9,11 +9,12 @@ User, Post, Number, Comment 등 여러 State이 있을 수 있기 때문에 redu
 */
 
 import { combineReducers } from 'redux';
-// import user from './user_reducer';
+import user from './user_reducer';
 // import comment from './comment_reducer';
 
 const rootReducer = combineReducers({
-  //user, comment
+  user,
+  //comment
 })
 
 export default rootReducer;

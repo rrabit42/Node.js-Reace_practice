@@ -7,7 +7,7 @@ import { Provider } from 'react-redux';
 import 'antd/dist/antd.css';
 import { applyMiddleware, createStore } from 'redux';
 import promiseMiddleware from 'redux-promise';
-import ReduxThunk from' redux-thunk';
+import ReduxThunk from 'redux-thunk'
 import Reducer from './_reducers';
 
 // 원래 createStore로만 Store 가져오는 건데 그럼 객체밖에 못받기 때문에 promise와 ReduxThunk을 이용해 만들어준다!
