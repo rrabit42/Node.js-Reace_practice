@@ -84,99 +84,12 @@ book.printTitle();
 * 쿠키가 일치하지 않으면 Authentication False  
 * 쿠키가 일치하면 Authentication True. 그리고 해당하는 유저의 정보들을 리턴해준다.  
 
-### ES module  
-[출처](https://medium.com/@enro2414_40667/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-export-import%EC%A0%95%EB%A6%AC-137ac9e327d9)
-
-**export(내보내기)**  
-- export에는 named와 default가 있습니다.
-- 두 가지 방식으로 모듈을 export할 수 있습니다.
-- export 하는 모듈은 “use strict” 입니다.
-
-1. export — named  
-모듈을 특정 이름으로 export합니다.  
-```
-// 먼저 선언한 함수 내보내기
-export { myFunction };
-
-// 상수 내보내기
-export const foo = Math.sqrt(2);
-```  
-
-2. export — default  
-모듈을 이름없이 export합니다.  
-```
-// 기본 내보내기
-export default function() {}
-
-// 기본 클래스 내보내기
-export default class {}
-```  
-
-**차이점**  
-- 하나의 모듈(파일)에서는 하나의 default export만 가능합니다.  
-- named export는 동일한 이름으로 가져올수 있고, 이름을 바꾸려면 as를 사용해야합니다.  
-```
-//a 모듈을 b이름으로 사용합니다.
-import {a as b} from "module.js";
-```  
-- {} 구문으로는 default export를 사용할 수 없습니다.  
-
-**import(가져오기)**  
-[출처](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/import)  
-```
-// name 파라미터는 export 되는 멤버를 받을 오브젝트의 이름입니다.
-// member 파라미터는 각각의 멤버를 지정하지만, name 파라미터는 모두를 가져옵니다.
-// 모듈에서 name 은 멤버 대신 하나의 default 파라미터를 통해 export 하는 경우에도 동작할 수 있습니다. 
-
-import name from "module-name";
-import * as name from "module-name";
-import { member } from "module-name";
-import { member as alias } from "module-name";
-import { member1 , member2 } from "module-name";
-import { member1 , member2 as alias2 , [...] } from "module-name";
-import defaultMember, { member [ , [...] ] } from "module-name";
-import defaultMember, * as alias from "module-name";
-import defaultMember from "module-name";
-import "module-name";
-```
-*import defaultMember, * as alias from “module-name”;*  
-- alias는 네임스페이스로 사용됩니다. defaultMember는 export default된 모듈로 바인딩됩니다.
-- alias에서 “module-name”에서 구현된 모듈들을 접근할 수 있습니다.
-*import “module-name”*  
-- 바인딩하지 않고, 모듈의 전체의 사이드 이펙트만 가져옵니다.  
-- 사이드 이펙트: 단순하게 해석하면 부작용이지만 부수 효과라고 보면 된다. 함수형 프로그래밍에서는 외부의 상태를 변경하는 것 또는 함수로 들어온 인자의 상태를 직접 변경하는 것  
-(이 부분은 [순수함수](https://jeong-pro.tistory.com/23)에 관해서 찾아보면 이해가 빠르다, 순수함수는 파라미터만 이용하여 외부에 영향을 미치지 않은 함수, 그 이외의 함수들은 모두 사이드이펙트가 있는 것!!ex. 전역 변수를 건들인다던지)  
-
-헷갈리는 부분이 있어 아래 링크를 첨부합니다. [LINK](https://stackoverflow.com/questions/41127479/es6-import-for-side-effects-meaning)  
-- 아무것도 export하지 않고, import만 해야할 경우(이런 경우가 언제일까??? import한 모듈을 한 번 실행하는 용도일때??  
-=> ESM(Entire Security Management) 패키지 사용 시 이런 import문 사용! -> 변수들만 sanitize 시켜주니까!!)  
-> If your project uses packages that export ESM, you can also import them for side effects only. This will run the code in the package entry point file (and any files it imports) only.  
-
-**우리 프로젝트에서**  
-import 시 {} 이 안으로 넣는 것은 그 안에 있는 함수나 변수들이 default로 가져오는게 아니어서 그렇다!  
-ex.
-```
-const { User } = require("../models/User") 
-```  
-만약 auth라는 함수가 default로 export된 값이라면 {} 없이 아래와 같이 쓸 수 있다.  
-```
-const auth = require("../middleware/auth")
-```
-
 ## 그 외 자잘한 정보들  
-* git은 소스코드를 관리할 수 있는 'tool', github은 클라우드 'service'  
 * nodemon 설치  
 ```npm install nodemon --save-dev``` : develop 모드 즉, 로컬에서 작업할 때만 사용하는 모듈이라는 뜻, 프로덕션 시에는 포함 X  
 따라서 *nodemon*은 dependencies가 아닌 devdependencies에 들어감.  
 scripts에 ```"backend": "nodemon index.js"``` 추가    
 앞으로는 node run start가 아니라 node run backend로 해서 nodemon 실행!  
-
-* var, let, const  
-var은 function-scoped이고, let, const는 block-scoped이다!  
-let, const를 사용하면 var를 사용할때보다 상당히 이점이 많다.  
-let과 const는 var와 다르게 변수 재선언 불가능이다.  
-let과 const의 차이점은 변수의 immutable여부이다.  
-let은 변수에 재할당이 가능하지만, const는 변수 재선언, 재할당 모두 불가능하다.  
 
 
 
