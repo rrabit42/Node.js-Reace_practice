@@ -82,6 +82,15 @@ public/index.html을 보면
 ex) Auth라는 HOC가 있다고 가정하면, 여기서 해당 유저가 해당 페이지에 들어갈 자격이 되는지를 알아낸 후에 자격이 된다면 Admin component에 가게 해주고 아니라면 다른 페이지로 보내버린다.  
 auth 안에 여러가지 component를 넣어놓고 다음 액션을 취할 수 있게! 이렇게 여러 기능을 넣어놓고 다른 컴포넌트들이 쓸 수 있게!  
 
+### React Router dom  
+라우팅을 할 때 리액트에서는 이 패키지을 사용한다!  
+> react-router - 웹&앱  
+> react-router-dom - 웹  
+> react-router-native -앱  
+
+### useEffect란  
+useEffect 훅은 함수형 컴포넌트에서 쓰이며 기존 클래스 컴포넌트의 라이프사이클 메서드들을 대체한다. 이를 정리하기 위해 간단히 라이프사이클 메서드를 설명하고, useEffect 훅의 효용을 적는다. [블로그](https://developer-alle.tistory.com/304)  
+~~React 기초를 더 공부해야할 것 같다.~~
 
 ## 에러 해결 방법  
 * [출처](https://aeei.io/template-not-provided-using-create-react-app/)  
