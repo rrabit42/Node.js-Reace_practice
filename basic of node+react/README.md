@@ -68,6 +68,10 @@ ex) http://naver.com:80 에서 ```http://```라는 스킴에 ```naver.com``` 호
 >> * 캐쉬 데이터, 공유 데이터 제공 기능: 유저가 인터넷까지 접속하지 않아도 프록시 서버에서 데이터를 제공받을 수 있다.  
 >> ex. 회사에서 직원들이나 집안에서 아이들 인터넷 사용 제어, 캐쉬를 이용해 더 빠른 인터넷 이용 제공, 더 나은 보안 제공, 이용 제한된 사이트 접근 가능  
 
+### (3) 프론트, 백 서버 동시에 돌리기  
+Concurrently를 이용해서 프론트, 백 서버 한번에 켜기  
+Concurrently : 여러개의 commands를 동시에 작동시킬 수 있게 해주는 Tool  
+[코드](https://github.com/rrabit42/Node.js-React_practice/commit/70d6dadc4086fabc24ddc0b72c2f38c3cb69e82b)  
 
 
 ## What I've learned - Javascript  
