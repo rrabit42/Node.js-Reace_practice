@@ -194,6 +194,69 @@ A store is not a class. It's just an object with a few methods on it.
 
 Originally We used Redux in Class Based Component  
 
+### (9) React vs React Hooks  
+
+* React Component  
+Class Component|Functional Component
+|:---:|:---:|
+|Class Component|Functional Component|
+|Provide more features|Provide less features|
+|Longer Code|Shorter Code|
+|More Complext Code|Simpler Code|
+|Slower Performance|Flaster Performace|
+
+> ex. Class Component  
+```
+import React, { Component } from 'react'
+
+export default class Hello extends Component {
+	render() {
+		return(
+		<div>
+			hello my friends!
+		</div>
+		)
+	}
+}
+```  
+
+> ex. Functional Component  
+```
+import React from 'react'
+
+export default function Hello() {
+	return(
+	<div>
+		hello my friends!
+	</div>
+	)
+}
+```  
+
+But, which features can't we use in functional component?
+
+<img width="411" alt="3" src="https://user-images.githubusercontent.com/46364778/89714033-cd5eeb00-d9d6-11ea-814e-f3ba8057213a.PNG">  
+
+* constructor : 먼저 이것부터 실행해서 state을 부여해줌  
+* render : html을 dom에 알맞게 넣어줌  
+* 그 다음에 component Mount를 해줌! update 도 비슷한 순서! 이걸 다 없애려면 unmount
+
+
+> functional component는 lifecycle, setState 등에 관련된 기능을 쓸 수 없음!  
+> So most of time, we needed to use class component...  
+
+> This changed with the React 16.9 Hooks update!  
+> Now we can do everything with **Functional Component** with simpler syntax and faster performance.  
+
+* **class component vs funcitonal component**  
+<img width="552" alt="4" src="https://user-images.githubusercontent.com/46364778/89714031-cb952780-d9d6-11ea-8e90-d84fca89cb4d.PNG">  
+
+functional component도!  
+1. useState를 통해 state을 지정할 수 있다.
+2. useEffect를 통해 lifecycle 지정도 가능
+
+*우리도 Hook을 사용하도록 하겠다*  
+
 
 
 ## 에러 해결 방법  
