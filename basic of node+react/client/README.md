@@ -76,7 +76,7 @@ public/index.html을 보면
 * **App.js** : Routing 관련 일을 처리한다.  
 * **Config.js** : 환경 변수같은 것들을 정하는 곳이다.  
 * **hoc & utils** : Higher Order Component의 약자로 여러 군데에서 쓰일 수 있는 것들을 이곳에 넣어둬서 어디서든 쓸 수 있게 해준다.  
-> hoc(higher-order compoenet) is a functino that takes a component and returns a new component.  
+> hoc(higher-order compoenet) is a function that takes a component and returns a new component.  
 즉, 다른 컴포넌트를 갖는 function!  
 ```const EnhancedComponent = higherOrderComponent(WrappedComponent)```  
 ex) Auth라는 HOC가 있다고 가정하면, 여기서 해당 유저가 해당 페이지에 들어갈 자격이 되는지를 알아낸 후에 자격이 된다면 Admin component에 가게 해주고 아니라면 다른 페이지로 보내버린다.  
@@ -257,6 +257,27 @@ functional component도!
 
 *우리도 Hook을 사용하도록 하겠다*  
 
+### (10) HOC를 이용한 인증  
+
+> 아무나 진입 가능한 페이지  
+ex. Landing Page, About Page  
+> 로그인한 회원만 진입 가능한 페이지  
+ex. Detail Page  
+> 로그인한 회원은 진입 못하는 페이지  
+ex. Register Page, Login Page  
+> 관리자만 진입 가능한 페이지  
+ex. Admin Page  
+
+> 이렇게 인증이 이뤄져야만 들어갈 수 있는 페이지가 있다!  
+> 또 인증이 필요한 것들이 있을까??  
+> YES! 댓글 작성, 파일 전송, 파일 업로드 등등등...  
+> 이러한 인증들은 어떻게 할 수 있을까?  
+
+**HOC, higer-order component**를 쓰면 된다! (위에 설명 있다!)  
+
+* AUTH(HOC)에 모든 컴포넌트(Landing Page, Login Page 등)을 넣는다.  
+* 그리고 HOC는 서버에 Request를 날려서 지금 현재 이 페이지에 들어와있는 유저의 상태 정보를 가지고 온다! (로그인이 되어있는지, 관리자인지 등)  
+* 상태에 따라 HOC부분에서 다른 곳으로 돌려버리거나 들어오도록 허락!  
 
 
 ## 에러 해결 방법  
