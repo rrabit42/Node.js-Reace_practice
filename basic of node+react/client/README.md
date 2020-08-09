@@ -88,6 +88,10 @@ auth 안에 여러가지 component를 넣어놓고 다음 액션을 취할 수 �
 > react-router-dom - 웹  
 > react-router-native -앱  
 
+* 프로젝트에서 자주 쓰는 ```props.history.push()```를 쓰려면  
+```import { withRouter } from 'react-router-dom'```가 필요함  
+왜냐하면 history가 react-router-dom을 이용해서 쓰고 있기 때문에!  
+
 ### (6) useEffect란  
 useEffect 훅은 함수형 컴포넌트에서 쓰이며 기존 클래스 컴포넌트의 라이프사이클 메서드들을 대체한다. 이를 정리하기 위해 간단히 라이프사이클 메서드를 설명하고, useEffect 훅의 효용을 적는다. [블로그](https://developer-alle.tistory.com/304)  
 ~~React 기초를 더 공부해야할 것 같다.~~  
