@@ -1,7 +1,8 @@
 import axios from 'axios';
 import {
   LOGIN_USER,
-  REGISTER_USER
+  REGISTER_USER,
+  AUTH_USER
 } from './types'
 
 // Redux 데이터 FLOW: 2. action 정의
@@ -25,6 +26,18 @@ export function registerUser(dataTosubmit) {
   // Redux 데이터 FLOW: 3. Reducer로 보내기
   return {
     type: REGISTER_USER,
+    payload: request
+  }
+}
+
+export function auth() {
+  // 서버에서 받은 response.data를 request에 저장!
+  const request = axios.get('/api/users/auth')
+  .then(response => response.data)
+
+  // Redux 데이터 FLOW: 3. Reducer로 보내기
+  return {
+    type: AUTH_USER,
     payload: request
   }
 }

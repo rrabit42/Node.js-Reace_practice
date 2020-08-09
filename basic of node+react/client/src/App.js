@@ -9,6 +9,7 @@ import {
 import LandingPage from './components/views/LandingPage/LandingPage'
 import LoginPage from './components/views/LoginPage/LoginPage'
 import RegisterPage from './components/views/RegisterPage/RegisterPage'
+import Auth from './hoc/auth'
 
 
 function App() {
@@ -33,9 +34,13 @@ function App() {
             </Route>
           를 한줄로 적는 방법
           */}
-          <Route exact path="/" component = {LandingPage} />
-          <Route exact path="/login" component = {LoginPage} />
-          <Route exact path="/register" component = {RegisterPage} />
+          {/*
+            이렇게 Page component들을 Auth Component에 넣었다!
+            몇개의 옵션과 함께!
+          */}
+          <Route exact path="/" component = {Auth(LandingPage, null)} />
+          <Route exact path="/login" component = {Auth(LoginPage, false)} />
+          <Route exact path="/register" component = {Auth(RegisterPage, false)} />
         </Switch>
       </div>
     </Router>
